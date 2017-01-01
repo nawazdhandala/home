@@ -1,9 +1,9 @@
 var lnStickyNavigation;
 
 $(document).ready(function()
-{	
+{
 	applyHeader();
-	applyNavigation(); 
+	applyNavigation();
 	applyMailTo();
 	applyResize();
 	checkHash();
@@ -15,13 +15,13 @@ $(document).ready(function()
 function applyHeader()
 {
 	$('.jumbotron').css({ height: ($(window).height()) +'px' });
-	
-	
-}	
+
+
+}
 
 function lazyLoad(poContainer)
 {
-	
+
 }
 
 /* NAVIGATION FUNCTIONS */
@@ -39,7 +39,7 @@ function applyClickEvent()
 	$('a[href*=#]').on('click', function(e)
 	{
 		e.preventDefault();
-		
+
 		if( $( $.attr(this, 'href') ).length > 0 )
 		{
 			$('html, body').animate(
@@ -53,7 +53,7 @@ function applyClickEvent()
 
 function applyNavigationFixForPhone()
 {
-	$('.navbar li a').click(function(event) 
+	$('.navbar li a').click(function(event)
 	{
 		$('.navbar-collapse').removeClass('in').addClass('collapse');
 	});
@@ -61,7 +61,7 @@ function applyNavigationFixForPhone()
 
 function applyScrollSpy()
 {
-	$('#navbar-example').on('activate.bs.scrollspy', function() 
+	$('#navbar-example').on('activate.bs.scrollspy', function()
 	{
 		window.location.hash = $('.nav .active a').attr('href').replace('#', '#/');
 	});
@@ -70,25 +70,25 @@ function applyScrollSpy()
 function applyStickyNavigation()
 {
 	lnStickyNavigation = $('.scroll-down').offset().top + 20;
-	
-	$(window).on('scroll', function() 
-	{  
-		stickyNavigation();  
-	});  
-	
+
+	$(window).on('scroll', function()
+	{
+		stickyNavigation();
+	});
+
 	stickyNavigation();
 }
 
 function stickyNavigation()
-{         
-	if($(window).scrollTop() > lnStickyNavigation) 
-	{   
-		$('body').addClass('fixed');  
-	} 
-	else 
-	{  
-		$('body').removeClass('fixed');   
-	}  
+{
+	if($(window).scrollTop() > lnStickyNavigation)
+	{
+		$('body').addClass('fixed');
+	}
+	else
+	{
+		$('body').removeClass('fixed');
+	}
 }
 
 /* MAILTO FUNCTION */
@@ -98,9 +98,9 @@ function applyMailTo()
 	$('a[href*=mailto]').on('click', function(e)
 	{
 		var lstrEmail = $(this).attr('href').replace('mailto:', '');
-		
+
 		lstrEmail = lstrEmail.split('').reverse().join('')
-		
+
 		$(this).attr('href', 'mailto:hotcomputerworks@hotmail.com');
 	});
 }
@@ -109,12 +109,12 @@ function applyMailTo()
 
 function applyResize()
 {
-	$(window).on('resize', function() 
-	{  
+	$(window).on('resize', function()
+	{
 		lnStickyNavigation = $('.scroll-down').offset().top + 20;
-	
+
 		$('.jumbotron').css({ height: ($(window).height()) +'px' });
-	}); 
+	});
 }
 
 /* HASH FUNCTION */
@@ -122,7 +122,7 @@ function applyResize()
 function checkHash()
 {
 	lstrHash = window.location.hash.replace('#/', '#');
-	
+
 	if($('a[href='+ lstrHash +']').length > 0)
 	{
 		$('a[href='+ lstrHash +']').trigger('click');
@@ -134,9 +134,9 @@ function checkHash()
 function checkBrowser()
 {
 	var loBrowserVersion = getBrowserAndVersion();
-	
+
 	if(loBrowserVersion.browser == 'Explorer' && loBrowserVersion.version < 8)
-	{ 
+	{
 		$('#upgrade-dialog').modal({
 			backdrop: 'static',
 			keyboard: false
@@ -144,7 +144,7 @@ function checkBrowser()
 	}
 }
 
-function getBrowserAndVersion() 
+function getBrowserAndVersion()
 {
 	var laBrowserData = [{
 		string: 		navigator.userAgent,
@@ -152,23 +152,23 @@ function getBrowserAndVersion()
 		identity: 		'Explorer',
 		versionSearch: 	'MSIE'
 	}];
-	
+
 	return {
 		browser: searchString(laBrowserData) || 'Modern Browser',
 		version: searchVersion(navigator.userAgent) || searchVersion(navigator.appVersion) || '0.0'
 	};
 }
 
-function searchString(paData) 
+function searchString(paData)
 {
 	for(var i = 0; i < data.length; i++)	
 	{
 		var lstrDataString 	= paData[i].string;
 		var lstrDataProp 	= paData[i].prop;
-		
+
 		this.versionSearchString = paData[i].versionSearch || paData[i].identity;
-		
-		if(lstrDataString) 
+
+		if(lstrDataString)
 		{
 			if(lstrDataString.indexOf(paData[i].subString) != -1)
 			{
@@ -181,15 +181,15 @@ function searchString(paData)
 		}
 	}
 }
-	
-function searchVersion(pstrDataString) 
+
+function searchVersion(pstrDataString)
 {
 	var lnIndex = pstrDataString.indexOf(this.versionSearchString);
-	
-	if(lnIndex == -1) 
+
+	if(lnIndex == -1)
 	{
 		return;
 	}
-	
+
 	return parseFloat(pstrDataString.substring(lnIndex + this.versionSearchString.length + 1));
-}	
+}

@@ -1,0 +1,21 @@
+[debug] ----------------------------------------------------------------------
+[debug] Command:      /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] CLI Version:  3.4.0
+[debug] Platform:     darwin
+[debug] Node Version: v7.5.0
+[debug] Time:         Sat Mar 18 2017 01:07:03 GMT+0530 (IST)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase"]
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/nawazdhandala-9abcd  
+ Sat Mar 18 2017 01:07:03 GMT+0530 (IST)
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/nawazdhandala-9abcd/tokens  
+ Sat Mar 18 2017 01:07:05 GMT+0530 (IST)
+[debug] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'nawazdhandala-9abcd'...
+[info] 
+[info] i  deploying database, hosting
+[info] ✔  database: rules ready to deploy.
+[info] i  hosting: preparing public directory for upload...
